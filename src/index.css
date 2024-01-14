@@ -1,9 +1,9 @@
 :root {
   --white: #ffffff;
+  --grey: #cccccc;
   --dark-blue: #17317f;
   --light-blue: #17317f;
   --brand-yellow: #fedc07;
-
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -32,4 +32,5 @@ p {
 button {
   border: none;
   cursor: pointer;
+  font-family: inherit;
 }

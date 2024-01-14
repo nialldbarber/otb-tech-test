@@ -1,3 +1,7 @@
+:root {
+  --icon-size: 20px;
+}
+
 .filter {
   display: flex;
   flex-direction: column;
@@ -5,20 +9,37 @@
 
 .button {
   border: 1px solid transparent;
-  padding: 1rem 1.2rem;
+  padding: 1.2rem;
   font-size: 1rem;
   font-weight: 500;
-  font-family: inherit;
-  transition: border-color 0.25s;
   background-color: var(--white);
+  color: var(--dark-blue);
+  border-bottom: 1px solid var(--dark-blue);
+
+  &:last-child {
+    border-bottom: none;
+  }
   
   &:hover {
     outline: 4px auto -webkit-focus-ring-color;
   }
 
   &.isActive {
-    color: white;
+    color: var(--white);
     background-color: var(--dark-blue);
+  }
+}
+
+.icon {
+  color: var(--grey);
+
+  svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+
+  &.isActive {
+    color: var(--white);
   }
 }
 

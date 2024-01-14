@@ -12,7 +12,7 @@ export default function App() {
 	const filteredHotels = useMemo(() => invokeSortBy(hotel, filter), [filter]);
 
 	return (
-		<main>
+		<main className={styles.main}>
 			<div className={styles.container}>
 				<Filter handleFilterChange={handleFilterChange} />
 				<section>

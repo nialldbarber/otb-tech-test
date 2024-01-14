@@ -1,5 +1,10 @@
+main {
+  padding: 2rem 4rem;
+}
+
 .container {
   display: grid;
   grid-template-columns: 300px 1fr;
-  max-width: 1120px;
+  max-width: 1150px;
+  gap: 6rem;
 }

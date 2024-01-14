@@ -39,17 +39,37 @@ function FilterButton({
 				`filter-${method}`,
 			)}
 		>
-			<div>
-				sort {method === "price" || method === "rating" ? "by" : null}{" "}
-				<span className={styles.filterText}>{FILTER_TEXT[method]}</span>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "space-between",
+					alignItems: "center",
+				}}
+			>
+				<p>
+					sort {method === "price" || method === "rating" ? "by" : null}{" "}
+					<span className={styles.filterText}>{FILTER_TEXT[method]}</span>
+				</p>
+				{method === "price" ? (
+					<PoundCircleFilled
+						className={clsx(styles.icon, {
+							[styles.isActive]: isActive === method,
+						})}
+					/>
+				) : method === "rating" ? (
+					<StarFilled
+						className={clsx(styles.icon, {
+							[styles.isActive]: isActive === method,
+						})}
+					/>
+				) : method === "alphabetically" ? (
+					<FileWordFilled
+						className={clsx(styles.icon, {
+							[styles.isActive]: isActive === method,
+						})}
+					/>
+				) : null}
 			</div>
-			{method === "price" ? (
-				<PoundCircleFilled />
-			) : method === "rating" ? (
-				<StarFilled />
-			) : method === "alphabetically" ? (
-				<FileWordFilled />
-			) : null}
 		</Button>
 	);
 }
