@@ -15,7 +15,7 @@ export default function App() {
 		<main className={styles.main}>
 			<div className={styles.container}>
 				<Filter handleFilterChange={handleFilterChange} />
-				<section>
+				<section className={styles.cardList}>
 					{filteredHotels.map((hotelCard) => (
 						<Card key={hotelCard.id} hotelCard={hotelCard} />
 					))}

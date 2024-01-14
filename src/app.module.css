@@ -13,3 +13,11 @@ main {
     grid-template-columns: 300px 1fr;
   }
 }
+
+@media screen and (max-width: 1059px) {
+  .cardList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

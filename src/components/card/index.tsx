@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Button } from "react-aria-components";
 import { moneyFormat, pluralise } from "../../lib/formatting";
 import { Hotels } from "../../types";
@@ -29,7 +29,6 @@ export function Card({
 	},
 }: Props) {
 	const [isActive, setIsActive] = useState(false);
-	const ref = useRef<HTMLDivElement | null>(null);
 
 	return (
 		<div className={styles.card} role="contentinfo">
@@ -55,6 +54,11 @@ export function Card({
 						)}
 					</Button>
 				</div>
+
+				<div className={styles.overviewContainerSmall}>
+					<MoreInfo isActive={isActive} overview={overview} />
+				</div>
+
 				<div className={styles.hotelInfoContainer}>
 					<h3>{hotel}</h3>
 					<p className={styles.hotelInfoLocation}>{location}</p>
@@ -113,15 +117,29 @@ export function Card({
 					</div>
 				</div>
 			</div>
-			<div className={styles.descriptionContainer}>
-				<div
-					style={{ height: isActive ? ref.current?.offsetHeight : 0 }}
-					aria-expanded={isActive}
-				>
-					<div ref={ref} className={styles.overviewContainer}>
-						<h3 className={styles.overviewInnerTitle}>Overview</h3>
-						<p className={styles.overviewInnerText}>{overview}</p>
-					</div>
+
+			<div className={styles.overviewContainerLarge}>
+				<MoreInfo isActive={isActive} overview={overview} />
+			</div>
+		</div>
+	);
+}
+
+type MoreInfoProps = {
+	isActive: boolean;
+	overview: string;
+};
+
+function MoreInfo({ isActive, overview }: MoreInfoProps) {
+	return (
+		<div className={styles.descriptionContainer}>
+			<div
+				style={{ display: isActive ? "block" : "none" }}
+				aria-expanded={isActive}
+			>
+				<div className={styles.overviewContainer}>
+					<h3 className={styles.overviewInnerTitle}>Overview</h3>
+					<p className={styles.overviewInnerText}>{overview}</p>
 				</div>
 			</div>
 		</div>
