@@ -72,6 +72,11 @@ h3 {
 
 .descriptionContainer {
   overflow: hidden;
+  display: none;
+
+  &.isActive {
+    display: block;
+  }
 }
 
 .overviewContainer {
@@ -132,6 +137,10 @@ h3 {
       font-weight: 700;
     }
   }
+}
+
+.description {
+
 }
 
 @media screen and (min-width: 1060px) {

@@ -5,6 +5,7 @@ import { Hotels } from "../../types";
 import styles from "./styles.module.css";
 
 import { DownOutlined, RightOutlined, StarFilled } from "@ant-design/icons";
+import clsx from "clsx";
 
 type Props = {
 	hotelCard: Hotels;
@@ -56,7 +57,7 @@ export function Card({
 				</div>
 
 				<div className={styles.overviewContainerSmall}>
-					<MoreInfo isActive={isActive} overview={overview} />
+					<Description isActive={isActive} overview={overview} />
 				</div>
 
 				<div className={styles.hotelInfoContainer}>
@@ -119,28 +120,28 @@ export function Card({
 			</div>
 
 			<div className={styles.overviewContainerLarge}>
-				<MoreInfo isActive={isActive} overview={overview} />
+				<Description isActive={isActive} overview={overview} />
 			</div>
 		</div>
 	);
 }
 
-type MoreInfoProps = {
+type DescriptionProps = {
 	isActive: boolean;
 	overview: string;
 };
 
-function MoreInfo({ isActive, overview }: MoreInfoProps) {
+function Description({ isActive, overview }: DescriptionProps) {
 	return (
-		<div className={styles.descriptionContainer}>
-			<div
-				style={{ display: isActive ? "block" : "none" }}
-				aria-expanded={isActive}
-			>
-				<div className={styles.overviewContainer}>
-					<h3 className={styles.overviewInnerTitle}>Overview</h3>
-					<p className={styles.overviewInnerText}>{overview}</p>
-				</div>
+		<div
+			className={clsx(styles.descriptionContainer, {
+				[styles.isActive]: isActive,
+			})}
+			aria-expanded={isActive}
+		>
+			<div className={styles.overviewContainer}>
+				<h3 className={styles.overviewInnerTitle}>Overview</h3>
+				<p className={styles.overviewInnerText}>{overview}</p>
 			</div>
 		</div>
 	);
