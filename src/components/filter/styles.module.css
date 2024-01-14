@@ -30,6 +30,20 @@
   }
 }
 
+.filterRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterRowText {
+  color: var(--dark-blue);
+}
+
+.filterRowTextActive {
+  color: var(--white);
+}
+
 .icon {
   color: var(--grey);
 

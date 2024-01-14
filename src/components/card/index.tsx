@@ -33,59 +33,80 @@ export function Card({
 
 	return (
 		<div className={styles.card} role="contentinfo">
-			<div style={{ display: "flex" }}>
-				<img src={hotelImage} alt={hotel} />
-				<div>
-					<h3 style={{ color: "var(--light-blue)" }}>{hotel}</h3>
-					<p>{location}</p>
+			<div className={styles.cardContainer}>
+				<div className={styles.imageContainer}>
+					<img src={hotelImage} alt={hotel} className={styles.hotelImage} />
+					<Button
+						onPress={() => setIsActive(!isActive)}
+						className={styles.seeMoreButton}
+						aria-label="see full overview of hotel"
+						aria-pressed={isActive}
+					>
+						<span className={styles.overviewText}>
+							<span className={styles.bold}>
+								Read {isActive ? "less" : "more"}
+							</span>{" "}
+							about this hotel{" "}
+						</span>
+						{isActive ? (
+							<DownOutlined className={styles.overviewButton} />
+						) : (
+							<RightOutlined className={styles.overviewButton} />
+						)}
+					</Button>
+				</div>
+				<div className={styles.hotelInfoContainer}>
+					<h3>{hotel}</h3>
+					<p className={styles.hotelInfoLocation}>{location}</p>
 					<div className={styles.ratingsContainer}>
 						{Array.from({ length: rating }).map((_, index) => (
 							<div key={`rating-${index}`} className={styles.rating}>
-								<StarFilled style={{ color: "var(--brand-yellow)" }} />
+								<StarFilled className={styles.ratingStar} />
 							</div>
 						))}
 					</div>
 
-					<div>
-						<p>
-							<span>
-								{adults} {pluralise("adult", adults)}
-							</span>
-							{children ? (
+					<div className={styles.detailsContainer}>
+						<div>
+							<p className={styles.details}>
 								<span>
-									, {children} {pluralise("child", children, "ren")}
+									<span className={styles.bold}>{adults}</span>{" "}
+									{pluralise("adult", adults)}
 								</span>
-							) : null}
-							{infants ? (
-								<span>
-									{" "}
-									& {infants} {pluralise("infant", infants)}
-								</span>
-							) : null}
-						</p>
+								{children ? (
+									<span>
+										, <span className={styles.bold}>{children}</span>{" "}
+										{pluralise("child", children, "ren")}
+									</span>
+								) : null}
+								{infants ? (
+									<span>
+										{" "}
+										& <span className={styles.bold}>{infants}</span>{" "}
+										{pluralise("infant", infants)}
+									</span>
+								) : null}
+							</p>
+						</div>
+
+						<div>
+							<p className={styles.details}>
+								<span className={styles.bold}>{departureDate}</span>
+								<span> for </span>
+								<span className={styles.bold}>{durationDays} days</span>
+							</p>
+						</div>
+
+						<div>
+							<p className={styles.details}>
+								departing from{" "}
+								<span className={styles.bold}>{departureAirport}</span>
+							</p>
+						</div>
 					</div>
 
 					<div>
-						<p>
-							<span>{departureDate}</span>
-							<span> for </span>
-							<span>{durationDays} days</span>
-						</p>
-					</div>
-
-					<div>
-						<p>departing from {departureAirport}</p>
-					</div>
-
-					<div>
-						<Button
-							style={{
-								display: "flex",
-								flexDirection: "column",
-								alignItems: "center",
-								backgroundColor: "var(--brand-yellow)",
-							}}
-						>
+						<Button className={styles.bookNowButton}>
 							<span>Book now</span>
 							<span>{moneyFormat.format(price)}</span>
 						</Button>
@@ -93,17 +114,13 @@ export function Card({
 				</div>
 			</div>
 			<div className={styles.descriptionContainer}>
-				<Button
-					onPress={() => setIsActive(!isActive)}
-					style={{ display: "flex", alignItems: "center" }}
+				<div
+					style={{ height: isActive ? ref.current?.offsetHeight : 0 }}
+					aria-expanded={isActive}
 				>
-					<span>Read {isActive ? "less" : "more"} about this hotel </span>
-					{isActive ? <DownOutlined /> : <RightOutlined />}
-				</Button>
-				<div style={{ height: isActive ? ref.current?.offsetHeight : 0 }}>
-					<div ref={ref}>
-						<h3>Overview</h3>
-						<p>{overview}</p>
+					<div ref={ref} className={styles.overviewContainer}>
+						<h3 className={styles.overviewInnerTitle}>Overview</h3>
+						<p className={styles.overviewInnerText}>{overview}</p>
 					</div>
 				</div>
 			</div>

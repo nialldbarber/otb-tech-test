@@ -31,7 +31,7 @@ function FilterButton({
 	return (
 		<Button
 			onPress={() => handleSetActive(method)}
-			aria-label={`filter-${method}`}
+			aria-label={`filter results ${method}`}
 			aria-pressed={isActive === method}
 			className={clsx(
 				styles.button,
@@ -39,14 +39,12 @@ function FilterButton({
 				`filter-${method}`,
 			)}
 		>
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "space-between",
-					alignItems: "center",
-				}}
-			>
-				<p>
+			<div className={styles.filterRow}>
+				<p
+					className={clsx(styles.filterRowText, {
+						[styles.filterRowTextActive]: isActive === method,
+					})}
+				>
 					sort {method === "price" || method === "rating" ? "by" : null}{" "}
 					<span className={styles.filterText}>{FILTER_TEXT[method]}</span>
 				</p>

@@ -1,17 +1,140 @@
+:root {
+  --spacing: 0.5rem;
+}
+
+p,
+h3 {
+  margin: 0;
+}
+
+.bold {
+  font-weight: 700;
+}
+
 .card {
   background-color: var(--white);
-  border: 1px solid var(--dark-blue);
+  margin-bottom: 2.5rem;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+}
+
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.overviewText {
+  color: var(--dark-blue);
+}
+
+.overviewInnerTitle {
+  color: var(--dark-blue);
+  font-size: 14px;
+  padding: 0 0 0.5rem;
+}
+
+.overviewInnerText {
+  font-size: 14px;
+}
+
+.overviewTextAction {
+  font-weight: 700;
+}
+
+.overviewButton {
+  color: var(--dark-blue);
+}
+
+.seeMoreButton {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--white);
+  font-size: 12px;
+  padding: var(--spacing) 1rem;
+  min-width: 220px;
+  justify-content: space-between;
 }
 
 .ratingsContainer {
   display: flex;
   flex-direction: row;
+  padding-top: var(--spacing);
+  padding-bottom: var(--spacing);
 }
 
 .rating {
   padding-right: 5px;
 }
 
+.ratingStar {
+  color: var(--brand-yellow);
+}
+
 .descriptionContainer {
   overflow: hidden;
+}
+
+.overviewContainer {
+  padding: 1.5rem;
+}
+
+.hotelInfoContainer {
+  padding: 1.5rem;
+  align-self: center;
+
+  h3 {
+    color: var(--light-blue);
+  }
+}
+
+.hotelImage {
+  height: 100%;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hotelInfoLocation {
+  color: var(--grey);
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: var(--spacing);
+}
+
+.detailsContainer {
+  padding-bottom: 1rem;
+}
+
+.details {
+  font-size: 13px;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.bookNowButton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--brand-yellow);
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+
+  span {
+    color: var(--dark-blue);
+    &:first-child {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    &:last-child {
+      font-size: 22px;
+      font-weight: 700;
+    }
+  }
 }

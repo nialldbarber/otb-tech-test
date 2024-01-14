@@ -1,10 +1,15 @@
 main {
-  padding: 2rem 4rem;
+  padding: 4rem;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 300px 1fr;
   max-width: 1150px;
   gap: 6rem;
+}
+
+@media screen and (min-width: 1060px) {
+  .container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  }
 }
