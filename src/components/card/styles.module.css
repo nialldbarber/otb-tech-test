@@ -1,0 +1,17 @@
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--dark-blue);
+}
+
+.ratingsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.rating {
+  padding-right: 5px;
+}
+
+.descriptionContainer {
+  overflow: hidden;
+}

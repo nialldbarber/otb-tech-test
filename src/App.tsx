@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import styles from "./app.module.css";
+import { Card } from "./components/card";
+import { Filter } from "./components/filter";
 import hotel from "./data/hotels.json";
 import { invokeSortBy } from "./lib/sorting";
 import type { Method } from "./types";
@@ -12,10 +14,10 @@ function App() {
 	return (
 		<main>
 			<div className={styles.container}>
-				<p>filter goes here</p>
+				<Filter handleFilterChange={handleFilterChange} />
 				<section>
 					{filteredHotels.map((hotelCard) => (
-						<p key={hotelCard.id}>cards</p>
+						<Card key={hotelCard.id} hotelCard={hotelCard} />
 					))}
 				</section>
 			</div>
