@@ -6,7 +6,7 @@ import hotel from "./data/hotels.json";
 import { invokeSortBy } from "./lib/sorting";
 import type { Method } from "./types";
 
-function App() {
+export default function App() {
 	const [filter, setFilter] = useState<Method>("price");
 	const handleFilterChange = (method: Method) => setFilter(method);
 	const filteredHotels = useMemo(() => invokeSortBy(hotel, filter), [filter]);
@@ -24,5 +24,3 @@ function App() {
 		</main>
 	);
 }
-
-export default App;
