@@ -1,4 +1,4 @@
-import type { Hotels, Method } from "../types";
+import type { Hotels, Method } from "@/types";
 
 export function invokeSortBy(data: Array<Hotels>, method: Method) {
 	const sortedData = [...data];

@@ -1,18 +1,17 @@
+import { Description } from "@/components/card/description";
+import styles from "@/components/card/styles.module.css";
+import { moneyFormat, pluralise } from "@/lib/formatting";
+import { Hotels } from "@/types";
+import { DownOutlined, RightOutlined, StarFilled } from "@ant-design/icons";
 import { useState } from "react";
 import { Button } from "react-aria-components";
-import { moneyFormat, pluralise } from "../../lib/formatting";
-import { Hotels } from "../../types";
-import styles from "./styles.module.css";
-
-import { DownOutlined, RightOutlined, StarFilled } from "@ant-design/icons";
-import clsx from "clsx";
 
 type Props = {
 	hotelCard: Hotels;
 };
 
-export function Card({
-	hotelCard: {
+export function Card({ hotelCard }: Props) {
+	const {
 		hotel,
 		location,
 		price,
@@ -27,8 +26,8 @@ export function Card({
 			departureDate,
 			durationDays,
 		},
-	},
-}: Props) {
+	} = hotelCard;
+
 	const [isActive, setIsActive] = useState(false);
 
 	return (
@@ -55,93 +54,63 @@ export function Card({
 						)}
 					</Button>
 				</div>
-
 				<div className={styles.overviewContainerSmall}>
 					<Description isActive={isActive} overview={overview} />
 				</div>
-
 				<div className={styles.hotelInfoContainer}>
 					<h3>{hotel}</h3>
 					<p className={styles.hotelInfoLocation}>{location}</p>
-					<div className={styles.ratingsContainer}>
+					<div
+						className={styles.ratingsContainer}
+						aria-label={`${rating} out of 5 stars`}
+					>
 						{Array.from({ length: rating }).map((_, index) => (
 							<div key={`rating-${index}`} className={styles.rating}>
 								<StarFilled className={styles.ratingStar} />
 							</div>
 						))}
 					</div>
-
 					<div className={styles.detailsContainer}>
-						<div>
-							<p className={styles.details}>
+						<p className={styles.details}>
+							<span>
+								<span className={styles.bold}>{adults}</span>{" "}
+								{pluralise("adult", adults)}
+							</span>
+							{children ? (
 								<span>
-									<span className={styles.bold}>{adults}</span>{" "}
-									{pluralise("adult", adults)}
+									, <span className={styles.bold}>{children}</span>{" "}
+									{pluralise("child", children, "ren")}
 								</span>
-								{children ? (
-									<span>
-										, <span className={styles.bold}>{children}</span>{" "}
-										{pluralise("child", children, "ren")}
-									</span>
-								) : null}
-								{infants ? (
-									<span>
-										{" "}
-										& <span className={styles.bold}>{infants}</span>{" "}
-										{pluralise("infant", infants)}
-									</span>
-								) : null}
-							</p>
-						</div>
-
-						<div>
-							<p className={styles.details}>
-								<span className={styles.bold}>{departureDate}</span>
-								<span> for </span>
-								<span className={styles.bold}>{durationDays} days</span>
-							</p>
-						</div>
-
-						<div>
-							<p className={styles.details}>
-								departing from{" "}
-								<span className={styles.bold}>{departureAirport}</span>
-							</p>
-						</div>
+							) : null}
+							{infants ? (
+								<span>
+									{" "}
+									& <span className={styles.bold}>{infants}</span>{" "}
+									{pluralise("infant", infants)}
+								</span>
+							) : null}
+						</p>
+						<p className={styles.details}>
+							<span className={styles.bold}>{departureDate}</span>
+							<span> for </span>
+							<span className={styles.bold}>{durationDays} days</span>
+						</p>
+						<p className={styles.details}>
+							departing from{" "}
+							<span className={styles.bold}>{departureAirport}</span>
+						</p>
 					</div>
-
-					<div>
-						<Button className={styles.bookNowButton}>
-							<span>Book now</span>
-							<span>{moneyFormat.format(price)}</span>
-						</Button>
-					</div>
+					<Button
+						className={styles.bookNowButton}
+						aria-label={`Book ${hotel} now`}
+					>
+						<span>Book now</span>
+						<span>{moneyFormat.format(price)}</span>
+					</Button>
 				</div>
 			</div>
-
 			<div className={styles.overviewContainerLarge}>
 				<Description isActive={isActive} overview={overview} />
-			</div>
-		</div>
-	);
-}
-
-type DescriptionProps = {
-	isActive: boolean;
-	overview: string;
-};
-
-function Description({ isActive, overview }: DescriptionProps) {
-	return (
-		<div
-			className={clsx(styles.descriptionContainer, {
-				[styles.isActive]: isActive,
-			})}
-			aria-expanded={isActive}
-		>
-			<div className={styles.overviewContainer}>
-				<h3 className={styles.overviewInnerTitle}>Overview</h3>
-				<p className={styles.overviewInnerText}>{overview}</p>
 			</div>
 		</div>
 	);

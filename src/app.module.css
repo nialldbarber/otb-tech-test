@@ -1,17 +1,23 @@
+:root {
+  --main-padding-large: 4rem;
+  --main-padding-small: 2rem;
+  --container-max-width: 1150px;
+  --grid-gap-large: 6rem;
+  --card-gap: 10px;
+}
+
 main {
-  padding: 4rem;
+  display: flex;
+  justify-content: center;
+  padding: var(--main-padding-large);
 }
 
 .container {
-  max-width: 1150px;
-  gap: 6rem;
+  max-width: var(--container-max-width);
+  gap: var(--grid-gap-large);
 }
 
 @media screen and (min-width: 1060px) {
-  main {
-    padding: 4rem;
-  }
-
   .container {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -20,12 +26,12 @@ main {
 
 @media screen and (max-width: 1059px) {
   main {
-    padding: 2rem;
+    padding: var(--main-padding-small);
   }
 
   .cardList {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: var(--card-gap);
   }
 }

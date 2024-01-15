@@ -1,5 +1,6 @@
 :root {
   --spacing: 0.5rem;
+  --content-padding: 1.5rem;
 }
 
 p,
@@ -8,7 +9,7 @@ h3 {
 }
 
 .bold {
-  font-weight: 700;
+  font-weight: var(--bold-font-weight);
 }
 
 .card {
@@ -21,49 +22,42 @@ h3 {
   overflow: hidden;
 }
 
-.overviewText {
+.overviewText,
+.overviewInnerTitle,
+.overviewButton {
   color: var(--dark-blue);
+}
+
+.overviewInnerTitle,
+.overviewInnerText,
+.seeMoreButton {
+  font-size: var(--small-font-size);
 }
 
 .overviewInnerTitle {
-  color: var(--dark-blue);
-  font-size: 14px;
   padding: 0 0 0.5rem;
-}
-
-.overviewInnerText {
-  font-size: 14px;
-}
-
-.overviewTextAction {
-  font-weight: 700;
-}
-
-.overviewButton {
-  color: var(--dark-blue);
 }
 
 .seeMoreButton {
   display: flex;
   align-items: center;
   position: absolute;
+  gap: var(--spacing);
   bottom: 0;
   background-color: var(--white);
-  font-size: 12px;
   padding: var(--spacing) 1rem;
-  min-width: 220px;
+  min-width: 250px;
   justify-content: space-between;
 }
 
 .ratingsContainer {
   display: flex;
   flex-direction: row;
-  padding-top: var(--spacing);
-  padding-bottom: var(--spacing);
+  padding: var(--spacing) 0;
 }
 
 .rating {
-  padding-right: 5px;
+  padding-right: 0.3rem;
 }
 
 .ratingStar {
@@ -79,16 +73,16 @@ h3 {
   }
 }
 
-.overviewContainer {
-  padding: 1.5rem;
+.overviewContainer,
+.hotelInfoContainer {
+  padding: var(--content-padding);
 }
 
 .hotelInfoContainer {
-  padding: 1.5rem;
   align-self: center;
 
   h3 {
-    color: var(--light-blue);
+    color: var(--dark-blue);
   }
 }
 
@@ -102,8 +96,8 @@ h3 {
 
 .hotelInfoLocation {
   color: var(--grey);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--small-font-size);
+  font-weight: var(--medium-font-weight);
   padding-top: var(--spacing);
 }
 
@@ -112,35 +106,32 @@ h3 {
 }
 
 .details {
-  font-size: 13px;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
+  font-size: var(--tiny-font-size);
+  padding: 0.2rem 0;
 }
 
 .bookNowButton {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--brand-yellow);
+  width: 100%;
   padding: 0.7rem 1rem;
-  border-radius: 4px;
+  background-color: var(--brand-yellow);
+  border-radius: var(--radii-small);
 
   span {
     color: var(--dark-blue);
+
     &:first-child {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: var(--small-font-size);
+      font-weight: var(--bold-font-weight);
     }
+
     &:last-child {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: var(--large-font-size);
+      font-weight: var(--bold-font-weight);
     }
   }
-}
-
-.description {
-
 }
 
 @media screen and (min-width: 1060px) {

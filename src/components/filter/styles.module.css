@@ -10,8 +10,8 @@
 .button {
   border: 1px solid transparent;
   padding: 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: var(--normal-font-size);
+  font-weight: var(--light-font-weight);
   background-color: var(--white);
   color: var(--dark-blue);
   border-bottom: 1px solid var(--dark-blue);
@@ -58,7 +58,7 @@
 }
 
 .filterText {
-  font-weight: 800;
+  font-weight: var(--extra-bold-font-weight);
 }
 
 @media screen and (max-width: 1059px) {

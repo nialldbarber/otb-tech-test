@@ -1,10 +1,10 @@
+import styles from "@/app.module.css";
+import { Card } from "@/components/card";
+import { Filter } from "@/components/filter";
+import hotel from "@/data/hotels.json";
+import { invokeSortBy } from "@/lib/sorting";
+import type { Method } from "@/types";
 import { useMemo, useState } from "react";
-import styles from "./app.module.css";
-import { Card } from "./components/card";
-import { Filter } from "./components/filter";
-import hotel from "./data/hotels.json";
-import { invokeSortBy } from "./lib/sorting";
-import type { Method } from "./types";
 
 export default function App() {
 	const [filter, setFilter] = useState<Method>("price");

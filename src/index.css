@@ -3,24 +3,47 @@
   --grey: #a7a7a7;
   --dark-grey: #616161;
   --dark-blue: #17317f;
-  --light-blue: #17317f;
   --brand-yellow: #fedc07;
-
   --large-screen-breakpoint-max: 1059px;
   --large-screen-breakpoint-min: 1060px;
+  --tiny-font-size: 13px;
+  --small-font-size: 14px;
+  --medium-font-size: 14px;
+  --normal-font-size: 16px;
+  --large-font-size: 22px;
+  --radii-small: 4px;
+  --light-font-weight: 500;
+  --medium-font-weight: 600;
+  --bold-font-weight: 700;
+  --extra-bold-font-weight: 800;
+}
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
+/* reset css: https://www.joshwcomeau.com/css/custom-css-reset/ */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-body {
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin: 0;
   min-width: 320px;
   background-image: url('/src/assets/background.png');
   background-repeat: repeat-x;
@@ -31,6 +54,7 @@ body {
 
 #root {
   margin: auto;
+  isolation: isolate;
 }
 
 p {

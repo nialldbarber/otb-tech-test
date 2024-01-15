@@ -1,76 +1,11 @@
-import {
-	FileWordFilled,
-	PoundCircleFilled,
-	StarFilled,
-} from "@ant-design/icons";
-import clsx from "clsx";
+import { FilterButton } from "@/components/filter/filter-button";
+import styles from "@/components/filter/styles.module.css";
+import type { Method } from "@/types";
 import { useState } from "react";
-import { Button } from "react-aria-components";
-import type { Method } from "../../types";
-import styles from "./styles.module.css";
 
 type Props = {
 	handleFilterChange: (method: Method) => void;
 };
-
-const FILTER_TEXT: Record<Method, string> = {
-	alphabetically: "alphabetically",
-	price: "price",
-	rating: "star rating",
-};
-
-function FilterButton({
-	method,
-	isActive,
-	handleSetActive,
-}: {
-	method: Method;
-	isActive: Method | null;
-	handleSetActive: (method: Method) => void;
-}) {
-	return (
-		<Button
-			onPress={() => handleSetActive(method)}
-			aria-label={`filter results ${method}`}
-			aria-pressed={isActive === method}
-			className={clsx(
-				styles.button,
-				{ [styles.isActive]: isActive === method },
-				`filter-${method}`,
-			)}
-		>
-			<div className={styles.filterRow}>
-				<p
-					className={clsx(styles.filterRowText, {
-						[styles.filterRowTextActive]: isActive === method,
-					})}
-				>
-					sort {method === "price" || method === "rating" ? "by" : null}{" "}
-					<span className={styles.filterText}>{FILTER_TEXT[method]}</span>
-				</p>
-				{method === "price" ? (
-					<PoundCircleFilled
-						className={clsx(styles.icon, {
-							[styles.isActive]: isActive === method,
-						})}
-					/>
-				) : method === "rating" ? (
-					<StarFilled
-						className={clsx(styles.icon, {
-							[styles.isActive]: isActive === method,
-						})}
-					/>
-				) : method === "alphabetically" ? (
-					<FileWordFilled
-						className={clsx(styles.icon, {
-							[styles.isActive]: isActive === method,
-						})}
-					/>
-				) : null}
-			</div>
-		</Button>
-	);
-}
 
 export function Filter({ handleFilterChange }: Props) {
 	const [isActive, setIsActive] = useState<Method | null>("price");
